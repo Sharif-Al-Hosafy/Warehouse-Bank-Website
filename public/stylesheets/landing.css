@@ -1,0 +1,81 @@
+body {
+  background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) {
+  background-image: url(https://www.constructionweekonline.in/public/images/2019/12/25/Warehousing.jpg);
+}
+.slideshow li:nth-child(2) {
+  background-image: url(https://i0.wp.com/roblogistic.com/wp-content/uploads/2019/02/fagerhult_ikea_dc_7.jpg?fit=1500%2C1000&ssl=1);
+  animation-delay: 10s;
+}
+.slideshow li:nth-child(3) {
+  background-image: url(https://blg.imgix.net/https%3A%2F%2Fwww.blg-logistics.com%2Fdam%2Fjcr%3A8b732964-ff88-49c7-9326-a4636b5e1e9c%2Fdienstleistung-lagerlogistik.jpg?auto=format%2Ccompress&ixlib=java-1.1.1&w=1920&s=4be7943140d449df37e92d03a3f892aa);
+  animation-delay: 20s;
+}
+.slideshow li:nth-child(4) {
+  background-image: url(https://tradesolutions.dbschenkerusa.com/wp-content/uploads/2019/07/transportationandlogistics-1.jpg);
+  animation-delay: 30s;
+}
+.slideshow li:nth-child(5) {
+  background-image: url(http://www.pm-3d.com/wp-content/uploads/2015/07/V3_4.jpg);
+  animation-delay: 40s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+.no-cssanimations .slideshow li {
+  opacity: 1;
+}

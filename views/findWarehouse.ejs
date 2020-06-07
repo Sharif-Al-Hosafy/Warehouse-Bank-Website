@@ -1,0 +1,24 @@
+<%- include('partials/header'); -%>
+<div style="padding-top: 10vh;">
+  <h1 style="padding-bottom: 30px;">
+    Let’s Find Your Next Warehouse.
+  </h1>
+  <div class="container" style="padding-left: 30%;">
+    <label for="sel1">Where:</label>
+    <form action="/find" method="POST">
+      <select
+        class="form-control"
+        id="sel1"
+        style="width: 50%;"
+        name="city"
+        id="city"
+      >
+        <% warehouse.forEach(function(house){ %>
+        <option> <%= house.city %> </option>
+        <%})%>
+      </select>
+      <input type="submit" name="" id="" />
+    </form>
+  </div>
+</div>
+<%- include('partials/footer'); -%>

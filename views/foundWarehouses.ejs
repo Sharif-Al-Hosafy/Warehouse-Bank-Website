@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+  <h1 style="padding-bottom: 30px;">
+    <%= choice.city %> Warehouses.
+  </h1>
+  <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <% choice.location.forEach(function(house){ %>
+    <div class="row">
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+          <img
+            class="card-img-top"
+            src="<%= house.image %>"
+            alt="Card image cap"
+            style="height: 240px;"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= house.name %></h5>
+            <p class="card-text" style="color: red;">
+              <%= house.space %>
+            </p>
+            <p class="card-text">
+              <%= house.typeOfgoods %>
+            </p>
+            <a href="#" class="btn btn-primary"><%= house.price %> </a>
+          </div>
+        </div>
+      </div>
+
+      <% }); %>
+    </div>
+  </div>
+  <%- include('partials/footer'); -%>
+</div>
