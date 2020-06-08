@@ -5,20 +5,26 @@
   </h1>
   <div class="container" style="padding-left: 30%;">
     <label for="sel1">Where:</label>
-    <form action="/find" method="POST">
-      <select
-        class="form-control"
-        id="sel1"
-        style="width: 50%;"
-        name="city"
-        id="city"
+
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
       >
-        <% warehouse.forEach(function(house){ %>
-        <option> <%= house.city %> </option>
+        Choose..
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% city.forEach(function(place){%>
+        <a class="dropdown-item" href="/find/<%=place._id%>"
+          ><%= place.name %></a
+        >
         <%})%>
-      </select>
-      <input type="submit" name="" id="" />
-    </form>
+      </div>
+    </div>
   </div>
 </div>
 <%- include('partials/footer'); -%>

@@ -2,71 +2,68 @@ let express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
-  Warehouse = require("./models/Warehouse");
+  City = require("./models/city"),
+  Warehouse = require("./models/warehouse");
 
 mongoose.connect("mongodb://localhost/warehouse");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); //mention the public directory from which we are serving the static files
-// Warehouse.create({
-//   city: "Cairo",
-//   location: [
-//     {
-//       name: "October City",
-//       space: "2000m",
-//       price: "10,000 L.E",
-//       image:
-//         "https://www.thebalancesmb.com/thmb/s9YAMfD8lPTijOHeFLyc4DkOz6w=/3001x2251/smart/filters:no_upscale()/rows-of-shelves-with-boxes-in-modern-warehouse-686616360-5a99e23cae9ab80037ba1ac1.jpg",
-//       typeOfgoods: "none",
-//     },
-//   ],
+
+// City.create({
+//   name: "Alexandria",
 // });
-
-// var obj = {
-//   name: "Al Agami",
-//   space: "4500m",
-//   price: "75,000 L.E",
-//   image:
-//     "https://www.mondo-logistic.net/wp-content/uploads/2019/04/Lagerlogistik.jpg",
-//   typeOfgoods: "Break Bulk warehouse",
-// };
-
-// db.warehouses.update(
-//   { city: "Alexandria" },
+// Warehouse.create(
 //   {
-//     $push: {
-//       location: {
-//         name: "Al Agami",
-//         space: "4500m",
-//         price: "75,000 L.E",
-//         image:
-//           "https://www.mondo-logistic.net/wp-content/uploads/2019/04/Lagerlogistik.jpg",
-//         typeOfgoods: "Break Bulk warehouse",
+//     name: "Burj Al Arab",
+//     price: "20000",
+//     typeOfGoods: "Chemical Warehouse",
+//     image:
+//       "https://www.roboticsbusinessreview.com/wp-content/uploads/2019/09/AdobeStock_249275256-1024x547.jpeg",
+//     space: "2000m",
+//   },
+//   function (err, house) {
+//     City.findOne({ name: "Alexandria" }, function (err, foundCity) {
+//       if (err) console.log(err);
+//       else {
+//         foundCity.location.push(house);
+//         foundCity.save(function (err, data) {
+//           if (err) console.log(err);
+//           else console.log(data);
+//         });
 //       }
-//     }
+//     });
 //   }
-// )
+// );
 
 app.get("/", function (req, res) {
   res.render("landing");
 });
 
 app.get("/find", function (req, res) {
-  Warehouse.find({}, function (err, warehouse) {
+  City.find({}, function (err, city) {
     if (err) console.log(err);
     else {
-      res.render("findWarehouse", { warehouse: warehouse });
+      res.render("findWarehouse", { city: city });
     }
   });
 });
 
-app.post("/find", function (req, res) {
-  var city = req.body.city;
-  Warehouse.findOne({ city: city }, function (err, choice) {
+app.get("/find/:id", function (req, res) {
+  City.findById(req.params.id)
+    .populate("location")
+    .exec(function (err, found) {
+      if (err) console.log(err);
+      else {
+        res.render("foundWarehouses", { found: found });
+      }
+    });
+});
+
+app.get("/find/:id/checkout", function (req, res) {
+  Warehouse.findById(req.params.id, function (err, found) {
     if (err) console.log(err);
-    else {
-      res.render("foundWarehouses", { choice: choice });
-    }
+    else res.render("checkout", { found: found });
   });
 });
 
