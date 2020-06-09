@@ -2,24 +2,27 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4"><%= found.name %> Warehouses.</h1>
-    <p class="lead" style="text-align: center;">
-      Search for specific warehouse
-    </p>
-    <form class="form-inline">
-      <div class="form-group mb-2"></div>
-      <div class="form-group mx-sm-3 mb-2" style="padding-left: 35%;">
+    <div style="padding-left: 35%;">
+      <p class="lead" style="padding-left: 3%;">
+        Search for specific warehouse
+      </p>
+
+      <form class="form-inline" action="/find/<%=found.id%>" method="GET">
         <input
-          type="password"
-          class="form-control"
-          id="inputPassword2"
-          placeholder="search.."
+          type="text"
+          class="form-control mb-2 mr-sm-2"
+          placeholder="search via address"
+          id="search"
+          name="search"
         />
-      </div>
-      <button type="submit" class="btn btn-secondary mb-2">
-        Search
-      </button>
-    </form>
+        <button type="submit" class="btn btn-secondary mb-2">Submit</button>
+      </form>
+    </div>
   </div>
+
+  <%if(noMatch !== null){%>
+  <h1 style="text-align: center;"><%=noMatch%></h1>
+  <%}%>
 
   <div class="row text-center">
     <% found.location.forEach(function(house){ %>

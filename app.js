@@ -49,14 +49,29 @@ app.get("/find", function (req, res) {
 });
 
 app.get("/find/:id", function (req, res) {
-  City.findById(req.params.id)
-    .populate("location")
-    .exec(function (err, found) {
-      if (err) console.log(err);
-      else {
-        res.render("foundWarehouses", { found: found });
-      }
-    });
+  var noMatch = null;
+  if (req.query.search) {
+    const regex = new RegExp(escapeRegex(req.query.search), "gi");
+    City.findById(req.params.id)
+      .populate("location", null, { name: regex })
+      .exec(function (err, found) {
+        if (err) console.log(err);
+        else {
+          console.log(found);
+          if (found.location.length < 1) noMatch = "No Warehouse Found";
+          res.render("foundWarehouses", { found: found, noMatch: noMatch });
+        }
+      });
+  } else {
+    City.findById(req.params.id)
+      .populate("location")
+      .exec(function (err, found) {
+        if (err) console.log(err);
+        else {
+          res.render("foundWarehouses", { found: found, noMatch: noMatch });
+        }
+      });
+  }
 });
 
 app.get("/find/:id/checkout", function (req, res) {
@@ -66,6 +81,10 @@ app.get("/find/:id/checkout", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
+app.listen(5001, function () {
   console.log("Listening !!!");
 });
