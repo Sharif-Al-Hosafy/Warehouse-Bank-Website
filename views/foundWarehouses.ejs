@@ -1,37 +1,53 @@
 <%- include('partials/header'); -%>
 <div class="container">
-  <h1 style="padding-bottom: 30px;">
-    <%= found.name %> Warehouses.
-  </h1>
-  <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-    <% found.location.forEach(function(house){ %>
-    <div class="row">
-      <div class="col-sm">
-        <form action="" method="POST">
-          <div class="card" style="width: 18rem;">
-            <img
-              class="card-img-top"
-              src="<%= house.image %>"
-              alt="Card image cap"
-              style="height: 240px;"
-            />
-            <div class="card-body">
-              <h5 class="card-title"><%= house.name %></h5>
-              <p class="card-text" style="color: red;">
-                <%= house.space %>
-              </p>
-              <p class="card-text">
-                <%= house.typeOfGoods %>
-              </p>
-              <a href="/find/<%=house._id%>/checkout" class="btn btn-primary"
-                >Confirm
-              </a>
-            </div>
-          </div>
-        </form>
+  <div class="jumbotron">
+    <h1 class="display-4"><%= found.name %> Warehouses.</h1>
+    <p class="lead" style="text-align: center;">
+      Search for specific warehouse
+    </p>
+    <form class="form-inline">
+      <div class="form-group mb-2"></div>
+      <div class="form-group mx-sm-3 mb-2" style="padding-left: 35%;">
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          placeholder="search.."
+        />
       </div>
-      <% }); %>
+      <button type="submit" class="btn btn-secondary mb-2">
+        Search
+      </button>
+    </form>
+  </div>
+
+  <div class="row text-center">
+    <% found.location.forEach(function(house){ %>
+    <div class="col-sm">
+      <form action="" method="POST">
+        <div class="card" style="width: 18rem; margin-bottom: 30px;">
+          <img
+            class="card-img-top"
+            src="<%=house.image%>"
+            alt="Card image cap"
+            style="height: 240px;"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= house.space %></h5>
+            <p class="card-text" style="color: red;">
+              <%= house.name %>
+            </p>
+            <p class="card-text">
+              <%= house.typeOfGoods %>
+            </p>
+            <a href="/find/<%=house._id%>/checkout" class="btn btn-dark"
+              >Confirm
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
+    <% }); %>
   </div>
 </div>
 <%- include('partials/footer'); -%>

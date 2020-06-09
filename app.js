@@ -15,12 +15,11 @@ app.use(express.static(__dirname + "/public")); //mention the public directory f
 // });
 // Warehouse.create(
 //   {
-//     name: "Burj Al Arab",
-//     price: "20000",
-//     typeOfGoods: "Chemical Warehouse",
-//     image:
-//       "https://www.roboticsbusinessreview.com/wp-content/uploads/2019/09/AdobeStock_249275256-1024x547.jpeg",
-//     space: "2000m",
+//     name: "Al Agami",
+//     price: "75000",
+//     typeOfGoods: "Break Bulk Warehouses",
+//     image: "https://i.ibb.co/PrK8NXm/Break-Bulk-agamy.jpg",
+//     space: "4500m",
 //   },
 //   function (err, house) {
 //     City.findOne({ name: "Alexandria" }, function (err, foundCity) {
