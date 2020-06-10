@@ -2,20 +2,38 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4"><%= found.name %> Warehouses.</h1>
-    <div style="padding-left: 35%;">
-      <p class="lead" style="padding-left: 3%;">
+    <div>
+      <p class="lead" style="padding-left: 3%; text-align: center;">
         Search for specific warehouse
       </p>
 
-      <form class="form-inline" action="/find/<%=found.id%>" method="GET">
+      <form
+        class="form-block"
+        action="/find/<%=found.id%>"
+        method="GET"
+        style="padding-left: 40%;"
+      >
         <input
           type="text"
           class="form-control mb-2 mr-sm-2"
           placeholder="search via address"
           id="search"
-          name="search"
+          name="search1"
+          style="width: 40%;"
         />
-        <button type="submit" class="btn btn-secondary mb-2">Submit</button>
+        <input
+          type="text"
+          class="form-control mb-2 mr-sm-2"
+          placeholder="search via type of goods"
+          id="search"
+          name="search2"
+          style="width: 40%;"
+        />
+        <div style="width: 40%;">
+          <button type="submit" class="form-control btn btn-secondary mb-2">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   </div>
