@@ -4,7 +4,11 @@
   <span style="padding-left: 43%; font-weight: 500; color: red;">
     <%=found.typeOfGoods%></span
   >
-  <form style="padding-top: 50px;">
+  <form
+    style="padding-top: 50px;"
+    method="POST"
+    action="/find/<%=found._id%>/checkout"
+  >
     <div class="form-row">
       <div class="form-group col-md-6">
         <label>Name</label>
@@ -13,26 +17,48 @@
           class="form-control"
           id="inputEmail4"
           placeholder="Full Name"
+          name="name"
+          required
         />
       </div>
       <div class="form-group col-md-6">
         <label>Email</label>
-        <input type="email" class="form-control" placeholder="Email" />
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          name="email"
+        />
       </div>
     </div>
     <div class="form-group">
       <label for="inputAddress">Phone Number</label>
-      <input type="text" class="form-control" placeholder="Your Phone Number" />
+      <input
+        type="number"
+        name="phone"
+        class="form-control"
+        placeholder="Your Phone Number"
+        required
+      />
     </div>
     <%var price = found.price%>
     <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputState">Duration / month</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>1 month - <%= parseInt(price) %> L.E</option>
-          <option>2 month - <%= 2 * parseInt(price) %> L.E</option>
-          <option>3 month - <%= 3 * parseInt(price) %> L.E</option>
+        <select id="inputState" class="form-control" name="price" required>
+          <option
+            ><%=found.name%> (<%=found.typeOfGoods%>) for 1 month - <%=
+            parseInt(price) %> L.E</option
+          >
+          <option
+            ><%=found.name%> (<%=found.typeOfGoods%>) for 2 month - <%= 2 *
+            parseInt(price) %> L.E</option
+          >
+          <option
+            ><%=found.name%> (<%=found.typeOfGoods%>) for 3 month - <%= 3 *
+            parseInt(price) %> L.E</option
+          >
         </select>
       </div>
       <input
