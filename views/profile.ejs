@@ -1,0 +1,19 @@
+<%- include('partials/header'); -%>
+<div class="container" style="text-align: center;">
+  <div style="padding-top: 8%;" >
+    <h3 style="padding-bottom: 40px;">Your Last Reservations</h3>
+    <%var cnt = 0; %> <% found.checkouts.forEach(function(check){ %>
+
+    <li class="list-group-item" ">
+      Order <%= ++cnt %>
+    </li>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-success">
+        <%=check.price%>
+      </li>
+    </ul>
+    <%})%>
+  </div>
+</div>
+
+<%-include('partials/footer'); -%>

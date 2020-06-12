@@ -2,15 +2,24 @@
 <html>
   <head>
     <title>Warehouse</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Merriweather&display=swap"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
       rel="stylesheet"
+      integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/stylesheets/register.css" />
   </head>
@@ -36,6 +45,9 @@
       <div class="collapse navbar-collapse" id="navbarLinks">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <a class="nav-link" href="/find">Home</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/contact">Contact Us</a>
           </li>
         </ul>
@@ -50,7 +62,9 @@
           </li>
           <%}else{%>
           <li class="nav-item">
-            <a class="nav-link" href="#">hi, <%=currentUser.username%></a>
+            <a class="nav-link" href="/profile"
+              >hi, <%=currentUser.username%></a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Logout</a>

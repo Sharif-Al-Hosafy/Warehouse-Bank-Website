@@ -7,6 +7,11 @@ let userSchema = new mongoose.Schema({
   phone: String,
   address: String,
   password: String,
+  checkouts: [
+    {
+      price: String,
+    },
+  ],
 });
 
 mongoose.plugin(passportLocalMongoose);

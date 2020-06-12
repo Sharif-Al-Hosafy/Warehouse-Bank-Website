@@ -2,10 +2,22 @@ var express = require("express"),
   router = express.Router(),
   City = require("../models/city"),
   nodemailer = require("nodemailer"),
+  User = require("../models/user"),
   Warehouse = require("../models/warehouse");
 
 router.get("/", function (req, res) {
   res.render("landing");
+});
+
+router.get("/contact", function (req, res) {
+  res.render("contactUs");
+});
+
+router.get("/profile", isLoggedIn, function (req, res) {
+  User.findOne({ username: req.user.username }, function (err, found) {
+    if (err) console.log(err);
+    else res.render("profile", { found: found });
+  });
 });
 
 router.get("/find", function (req, res) {
@@ -52,6 +64,18 @@ router.get("/find/:id/checkout", isLoggedIn, function (req, res) {
 });
 
 router.post("/find/:id/checkout", isLoggedIn, function (req, res) {
+  User.findOne({ username: req.user.username }, function (err, found) {
+    if (err) console.log(err);
+    else {
+      var obj = { price: req.body.price };
+      found.checkouts.push(obj);
+      found.save(function (err, data) {
+        if (err) console.log(err);
+        else console.log(data);
+      });
+    }
+  });
+
   const output = `
     <h3>Your reservation details</h3>
     <ul>  
