@@ -3,7 +3,7 @@ var express = require("express"),
   City = require("../models/city"),
   nodemailer = require("nodemailer"),
   User = require("../models/user"),
-  Warehouse = require("../models/warehouse");
+  Warehouse = require("../models/Warehouse");
 
 router.get("/", function (req, res) {
   res.render("landing");
