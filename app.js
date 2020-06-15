@@ -11,6 +11,31 @@ let express = require("express"),
   WarehouseRouts = require("./routs/warehouseRouts"),
   authRouts = require("./routs/authRouts");
 
+// City.create({
+//   name: "Alexandria",
+// });
+// Warehouse.create(
+//   {
+//     name: "Al Agami",
+//     price: "75000",
+//     typeOfGoods: "Break Bulk Warehouses",
+//     image: "https://i.ibb.co/PrK8NXm/Break-Bulk-agamy.jpg",
+//     space: "4500m",
+//   },
+//   function (err, house) {
+//     City.findOne({ name: "Alexandria" }, function (err, foundCity) {
+//       if (err) console.log(err);
+//       else {
+//         foundCity.location.push(house);
+//         foundCity.save(function (err, data) {
+//           if (err) console.log(err);
+//           else console.log(data);
+//         });
+//       }
+//     });
+//   }
+// );
+
 // mongoose.connect("mongodb://localhost/warehouse");
 mongoose.connect(
   "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
