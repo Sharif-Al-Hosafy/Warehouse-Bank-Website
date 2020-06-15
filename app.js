@@ -36,10 +36,10 @@ let express = require("express"),
 //   }
 // );
 
-// mongoose.connect("mongodb://localhost/warehouse");
-mongoose.connect(
-  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect(
+//   "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
+// );
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
