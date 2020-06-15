@@ -71,6 +71,7 @@ app.use(function (req, res, next) {
 app.use(authRouts);
 app.use(WarehouseRouts);
 
-app.listen(3000, function () {
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
   console.log("Listening !!!");
 });
