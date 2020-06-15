@@ -42,6 +42,6 @@ app.use(function (req, res, next) {
 app.use(authRouts);
 app.use(WarehouseRouts);
 
-app.listen(3001, function () {
+app.listen(3000, function () {
   console.log("Listening !!!");
 });
