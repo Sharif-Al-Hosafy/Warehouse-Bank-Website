@@ -37,7 +37,7 @@ let express = require("express"),
 // );
 
 mongoose.connect(
-  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/Warehouse?retryWrites=true&w=majority"
+  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));
