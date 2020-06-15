@@ -11,7 +11,11 @@ let express = require("express"),
   WarehouseRouts = require("./routs/warehouseRouts"),
   authRouts = require("./routs/authRouts");
 
-mongoose.connect("mongodb://localhost/warehouse");
+// mongoose.connect("mongodb://localhost/warehouse");
+mongoose.connect(
+  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
+);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); //mention the public directory from which we are serving the static files
