@@ -16,11 +16,11 @@ let express = require("express"),
 // });
 // Warehouse.create(
 //   {
-//     name: "Al Agami",
-//     price: "75000",
+//     name: "Burg Al Arab",
+//     price: "60000",
 //     typeOfGoods: "Break Bulk Warehouses",
-//     image: "https://i.ibb.co/PrK8NXm/Break-Bulk-agamy.jpg",
-//     space: "4500m",
+//     image: "https://i.ibb.co/wLVF3r4/afaf.jpg",
+//     space: "3200m",
 //   },
 //   function (err, house) {
 //     City.findOne({ name: "Alexandria" }, function (err, foundCity) {
@@ -37,7 +37,8 @@ let express = require("express"),
 // );
 
 mongoose.connect(
-  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority"
+  "mongodb+srv://sharif:allahraby1234@warehouse-jrtie.mongodb.net/warehouse?retryWrites=true&w=majority",
+  { autoIndex: false }
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));
