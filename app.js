@@ -16,11 +16,11 @@ let express = require("express"),
 // });
 // Warehouse.create(
 //   {
-//     name: "Burg Al Arab",
-//     price: "60000",
+//     name: "Abis",
+//     price: "13000",
 //     typeOfGoods: "Break Bulk Warehouses",
-//     image: "https://i.ibb.co/wLVF3r4/afaf.jpg",
-//     space: "3200m",
+//     image: "https://i.ibb.co/Jj1Gp0x/ssss.jpg",
+//     space: "750m",
 //   },
 //   function (err, house) {
 //     City.findOne({ name: "Alexandria" }, function (err, foundCity) {
