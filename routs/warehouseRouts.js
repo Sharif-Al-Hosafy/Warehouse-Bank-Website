@@ -71,7 +71,18 @@ router.post("/find/:id/checkout", isLoggedIn, function (req, res) {
       found.checkouts.push(obj);
       found.save(function (err, data) {
         if (err) console.log(err);
-        else console.log(data);
+      });
+    }
+  });
+
+  Warehouse.findById(req.params.id, function (err, found) {
+    if (err) console.log(err);
+    else {
+      found.days = req.body.duration;
+      found.free = true;
+      console.log(found.days);
+      found.save(function (err, data) {
+        if (err) console.log(err);
       });
     }
   });

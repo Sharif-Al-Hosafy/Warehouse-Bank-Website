@@ -6,6 +6,8 @@ let warehouseSchema = new mongoose.Schema({
   typeOfGoods: String,
   image: String,
   space: String,
+  free: Boolean,
+  days: Number,
 });
 
 module.exports = mongoose.model("warehouse", warehouseSchema);

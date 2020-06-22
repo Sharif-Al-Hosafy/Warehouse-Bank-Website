@@ -1,5 +1,6 @@
 <%- include('partials/header'); -%>
 <div class="container">
+  <%var x = found.free%>
   <h1><%=found.name%></h1>
   <span style="padding-left: 43%; font-weight: 500; color: red;">
     <%=found.typeOfGoods%></span
@@ -45,8 +46,8 @@
     <%var price = found.price%>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="inputState">Duration / month</label>
-        <select id="inputState" class="form-control" name="price" required>
+        <label for="inputState">Choose offer</label>
+        <select id="inputState" class="form-control" name="price">
           <option
             ><%=found.name%> (<%=found.typeOfGoods%>) for 1 month - <%=
             parseInt(price) %> L.E</option
@@ -61,12 +62,33 @@
           >
         </select>
       </div>
+      <%const deadline = new Date() %> <%
+      deadline.setDate(deadline.getDate()+3); %><%var now = new
+      Date().getTime(); %><%var t = deadline - now; %> <%var days = Math.floor(t
+      / (1000 * 60 * 60 * 24)); %> <%if(x && days !== 0 ){%>
+      <h1 style="padding-left: 160px; padding-top: 100px; color: red;">
+        This Warehouse is currently in use for <%=days%> %> days
+      </h1>
+      <%}else{%>
+
+      <div class="form-group col-md-2">
+        <label> Duration / month</label>
+        <input
+          type="number"
+          name="duration"
+          value="0"
+          min="0"
+          max="3"
+          class="form-control"
+        />
+      </div>
       <input
         type="submit"
         class="form-control btn btn-success"
         placeholder="Your Phone Number"
       />
     </div>
+    <%}%>
   </form>
 </div>
 <% -include('partials/footer'); -%>
