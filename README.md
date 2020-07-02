@@ -5,7 +5,7 @@ Warehouse is a website that helps students registered in the Arab Academy for Sc
 
 ## Live Demo
 
- To see the app in action, go to https://academyprojectwarehouse.herokuapp.com
+ To see the app in action, go to https://warehousebank.herokuapp.com/
  
 * ## Features
    * Authentication:
